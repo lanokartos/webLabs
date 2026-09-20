@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  font-family: sans-serif;
+  color: var(--title-color);
+}
+
+:root {
+  --bg-color: #101626;
+  --card-color: rgb(3, 3, 100);
+  --title-color: white;
+  --second-title-color: rgb(157, 156, 156);
+  --accent-blue: #1b63ff;
+  --font-main: sans-serif;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+}
+
+h1.align-txt {
+  margin-bottom: 2px;
+}
+
+p.align-txt {
+  margin-bottom: 24px;
+}
+
+.align-txt {
+  text-align: center;
+}
+
+.txt-names {
+  color: var(--accent-blue);
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.txt {
+  color: var(--second-title-color);
+}
+
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.pricing-card {
+  width: 300px;
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  border: 1px solid grey;
+  position: relative;
+  padding-top: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 20px;
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 25%;
+  transform: translateX(-50%);
+  background-color: var(--accent-blue);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 5px;
+}
+
+.features li {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.price-wrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+}
+
+.period {
+  color: var(--second-title-color);
+  font-size: 16px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  font-family: inherit;
+  border-radius: 8px;
+  margin: 16px 0 0 0;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.btn-primary {
+  background-color: var(--accent-blue);
+  color: white;
+  border: none;
+}
+
+.pricing-card.is-active {
+  border: 2px solid var(--accent-blue);
+}
+
+@media (max-width: 768px) {
+  .pricing-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
