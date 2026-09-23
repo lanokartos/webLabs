@@ -2,13 +2,6 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  background-color: var(--bg-color);
-  font-family: sans-serif;
-  color: var(--title-color);
-}
-
 :root {
   --bg-color: #101626;
   --card-color: rgb(3, 3, 100);
@@ -20,8 +13,28 @@ body {
   --radius-btn: 8px;
 }
 
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  font-family: sans-serif;
+  color: var(--title-color);
+}
+
+main {
+  flex: 1;
+}
+
 h1.align-txt {
+  margin-top: 0;
   margin-bottom: 2px;
+}
+
+h2.align-txt {
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 p.align-txt {
@@ -59,6 +72,12 @@ p.align-txt {
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card h3 {
+  margin: 10px 0 10px 0;
 }
 
 .badge {
@@ -103,12 +122,15 @@ p.align-txt {
 }
 
 .btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   padding: 12px;
   width: 100%;
   font-family: inherit;
   border-radius: 8px;
-  margin: 16px 0 0 0;
+  margin: auto 0 0 0;
 }
 
 .btn-outline {
@@ -125,6 +147,11 @@ p.align-txt {
 
 .pricing-card.is-active {
   border: 2px solid var(--accent-blue);
+}
+
+.footer {
+  text-align: right;
+  padding: 20px;
 }
 
 @media (max-width: 768px) {

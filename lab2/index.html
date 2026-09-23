@@ -1,59 +1,106 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Тарифні плани та ціни на підписку на хмару</title>
     <link rel="stylesheet" href="./styles.css" />
+    <meta
+      name="description"
+      content="Оберіть тарифний план, який найкраще підходить для ваших завдань. Порівняйте тарифи та ціни на підписку на хмару."
+    />
   </head>
   <body>
-    <section>
-      <h1 class="align-txt">Наші тарифи</h1>
-      <p class="align-txt txt">Оберіть план, який найкраще підходить для ваших завдань</p>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h2 class="txt-names">BASIC</h2>
-          <div class="price-wrapper">
-            <span class="price">$10</span>
-            <span class="period">/ month</span>
-          </div>
-          <ul class="features">
-            <li><span class="txt-names">✓</span> <span class="txt">1 User</span></li>
-            <li><span class="txt-names">✓</span> <span class="txt">5GB Storage</span></li>
-            <li><span class="txt-names">✓</span> <span class="txt">Basic Support</span></li>
-          </ul>
-          <button type="button" class="btn btn-outline">Select</button>
-        </div>
+    <main>
+      <section class="pricing" aria-labelledby="pricing-title">
+        <header class="pricing-header">
+          <h1 class="page-title align-txt">Підписка на хмарний сервіс</h1>
+          <h2 id="pricing-title" class="section-title align-txt">Наші тарифні плани</h2>
+          <p class="align-txt txt">Оберіть план, який найкраще підходить для ваших завдань</p>
+        </header>
 
-        <div class="pricing-card is-active">
-          <div class="badge">PRO • ACTIVE</div>
-          <h2 class="txt-names">PRO</h2>
-          <div class="price-wrapper">
-            <span class="price">$29</span>
-            <span class="period">/ month</span>
-          </div>
-          <ul class="features">
-            <li><span class="txt-names">✓</span> <span class="txt">5 Users</span></li>
-            <li><span class="txt-names">✓</span> <span class="txt">50GB Storage</span></li>
-            <li><span class="txt-names">✓</span> <span class="txt">Priority Support</span></li>
-          </ul>
-          <button type="button" class="btn btn-primary">Get Started</button>
-        </div>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <h3 class="txt-names">BASIC</h3>
+            <div class="price-wrapper">
+              <span class="price">$10</span>
+              <span class="period">/ month</span>
+            </div>
+            <ul class="features">
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">1 User</span>
+              </li>
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">5GB Storage</span>
+              </li>
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">Basic Support</span>
+              </li>
+            </ul>
+            <a href="#basic" class="btn btn-outline" aria-label="Обрати тариф Basic">Select</a>
+          </article>
 
-        <div class="pricing-card">
-          <h2 class="txt-names">ENTERPRISE</h2>
-          <div class="price-wrapper">
-            <span class="price">$99</span>
-            <span class="period">/ month</span>
-          </div>
-          <ul class="features">
-            <li><span class="txt-names">✓</span> <span class="txt">Unlimited</span></li>
-            <li><span class="txt-names">✓</span> <span class="txt">1TB Storage</span></li>
-            <li><span class="txt-names">✓</span> <span class="txt">24/7 Support</span></li>
-          </ul>
-          <button type="button" class="btn btn-outline">Contact</button>
+          <article class="pricing-card is-active">
+            <span class="badge" aria-label="Поточний активний тариф: Pro Active">PRO • ACTIVE</span>
+            <h3 class="txt-names">PRO</h3>
+            <div class="price-wrapper">
+              <span class="price">$29</span>
+              <span class="period">/ month</span>
+            </div>
+            <ul class="features">
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">5 Users</span>
+              </li>
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">50GB Storage</span>
+              </li>
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">Priority Support</span>
+              </li>
+            </ul>
+            <a href="#pro" class="btn btn-primary" aria-label="Почати роботу з тарифом Pro"
+              >Get Started</a
+            >
+          </article>
+
+          <article class="pricing-card">
+            <h3 class="txt-names">ENTERPRISE</h3>
+            <div class="price-wrapper">
+              <span class="price">$99</span>
+              <span class="period">/ month</span>
+            </div>
+            <ul class="features">
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">Unlimited</span>
+              </li>
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">1TB Storage</span>
+              </li>
+              <li>
+                <span class="txt-names" aria-hidden="true">✓</span>
+                <span class="txt">24/7 Support</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="btn btn-outline"
+              aria-label="Зв'язатися щодо тарифу Enterprise"
+              >Contact</a
+            >
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="txt">© 2026 Хмарний сервіс. Всі права захищені.</p>
+    </footer>
   </body>
 </html>
