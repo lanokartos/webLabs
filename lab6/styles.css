@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+}
+
+.container2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.container3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.card-wrapper {
+  width: 400px;
+  container-type: inline-size;
+  & .card {
+    border: solid red;
+    padding: 100px;
+  }
+}
+
+@container (width > 500px) {
+  .card {
+    border: solid blue;
+  }
+}
