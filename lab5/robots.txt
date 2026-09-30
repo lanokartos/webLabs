@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /css/
-Disallow: /img/
 Disallow: /admin/
+
+Sitemap: https://weblabs-lab5.vercel.app/sitemap.xml

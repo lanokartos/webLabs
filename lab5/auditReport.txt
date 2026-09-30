@@ -1,0 +1,137 @@
+ЗВІТ КОМПЛЕКСНОГО АУДИТУ САЙТУ FLOWTASK (lab5)
+=====================================================
+Об'єкти аналізу: index.html, about.html, css/styles.css, js/main.js, robots.txt
+Виміри з measurement.txt:
+  Performance: 67 (FCP: 1.2s, LCP: 14.8s, TBT: 110ms, CLS: 0.13)
+  Accessibility: 79
+  Best Practices: 100
+  SEO: 50
+
+Детальний звіт у форматі Markdown збережено у файлі: auditReport.md
+
+-----------------------------------------------------
+1. ГОЛОВНА СТОРІНКА (index.html)
+-----------------------------------------------------
+
+[ACCESSIBILITY (a11y) - Поточний бал: 79/100]
+1. КРИТИЧНО: У css/styles.css (рядки 40-42) встановлено ':focus { outline: none; }'.
+   Це повністю приховує фокус клавіатури по всьому сайту (Tab не видно).
+   Порушення: WCAG 2.4.7 (Focus Visible).
+   Виправлення: видалити outline:none або задати ':focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }'.
+
+2. КРИТИЧНО: Кнопка 'Get started' в Hero (рядок 64) зроблена через <div>:
+   <div class="button button--primary button--lg" id="hero-cta">Get started</div>
+   Вона не фокусується табом, не озвучується як кнопка скрінрідерами і не активується з клавіатури.
+   Виправлення: замінити на <a href="#trial" class="button..."> або <button class="button...">.
+
+3. КРИТИЧНО: Пункти навігації меню (рядки 42-45) зроблені через <div>:
+   <div class="nav-item" data-target="features">Product</div>
+   Недоступні з клавіатури, не є семантичними посиланнями.
+   Виправлення: замінити на <a href="#features" class="nav-item">Product</a> тощо.
+
+4. КРИТИЧНО: Кнопка відправки форми (рядок 288) зроблена через <div>:
+   <div class="button button--invert" role="button" tabindex="0" id="trial-submit">Start free trial</div>
+   Не підтримує відправку форми на Enter всередині інпутів.
+   Виправлення: замінити на <button type="submit" class="button...">.
+
+5. ВИСОКА: Посилання на соцмережі у футері (рядки 303-318) містять лише SVG з aria-hidden="true".
+   Скрінрідер озвучує їх як порожні посилання ('link, blank').
+   Виправлення: додати aria-label="Twitter", aria-label="GitHub", aria-label="LinkedIn".
+
+6. ВИСОКА: Поля форми trial (рядки 285-287) не мають тегів <label> чи aria-label.
+   Placeholder не є заміною мітки (Lighthouse flag: Form elements do not have associated labels).
+
+7. ВИСОКА: Колір тексту --ink-muted: #939ba7 на білому фоні дає контрастність 2.76:1 при мінімумі 4.5:1 (WCAG AA).
+   Текст <p class="muted"> практично не читається людям зі слабким зором.
+
+8. СЕРЕДНЯ: Головне зображення hero (рядок 67) не має атрибута alt.
+
+9. СЕРЕДНЯ: Пропуск ієрархії заголовків: після <h1>FlowTask</h1> одразу йде <h4>Why FlowTask?</h4> (рядок 74).
+
+10. СЕРЕДНЯ: FAQ акордеони мають захардкоджений aria-expanded="true", хоча закриті за замовчуванням, а JS не перемикає стан атрибута.
+
+
+[SEO - Поточний бал: 50/100]
+1. БЛОКЕР: У рядку 7 стоїть <meta name="robots" content="noindex">.
+   Це забороняє пошуковим роботам індексувати сайт. Поки цей тег є, сайт ніколи не потрапить у Google.
+
+2. ВИСОКА: У robots.txt стоять директиви Disallow: /css/ та Disallow: /img/.
+   Це забороняє Googlebot завантажувати стилі (ламає перевірку мобільної версії) та картинки.
+
+3. ВИСОКА: У тегу <html> відсутній атрибут lang="en".
+
+4. ВИСОКА: Відсутній метатег <meta name="description">.
+
+5. ВИСОКА: Заголовок <title>FlowTask</title> шаблонний, надто короткий і без ключових слів.
+
+6. СЕРЕДНЯ: Відсутній канонічний тег <link rel="canonical" href="...">.
+
+7. СЕРЕДНЯ: Посилання з неінформативними текстами 'Learn more', 'Read more'.
+
+
+[OPEN GRAPH ТА SOCIAL SHARING]
+1. Повністю відсутні теги og:title, og:description, og:image, og:url, og:type.
+2. Повністю відсутні теги Twitter Card (twitter:card, twitter:title тощо).
+   При відправці посилань у Telegram, Facebook, Slack або X відображається лише голий лінк без прев'ю.
+
+
+[STRUCTURED DATA (Schema.org / JSON-LD)]
+1. Задано @type: "Product", але для хмарного таск-трекера точнішим є @type: "SoftwareApplication" або @type: "WebApplication".
+2. Валідатор Google Rich Results для Product вимагає поле 'image', яке зараз відсутнє.
+3. Вказано AggregateRating (4.9), але немає розмітки конкретних відгуків або джерела рейтингу.
+
+
+[PERFORMANCE / CORE WEB VITALS (Чому LCP = 14.8 с, а CLS = 0.13)]
+1. Файл img/hero.jpg важить 2.78 МБ. Це головна причина повільного LCP. Потрібно стиснути, конвертувати у WebP/AVIF і вказати width/height.
+2. Скрипт js/main.js у <head> блокує парсинг (не має defer).
+3. CLS = 0.13 спричинений тим, що js/main.js (рядок 71) через 800мс додає .promo банер у початок body, зміщуючи всю сторінку вниз.
+4. TBT штучно завищений у main.js:20 циклом на 300мс блокування CPU при кліку на кнопки.
+
+-----------------------------------------------------
+2. ДРУГА СТОРІНКА (about.html)
+-----------------------------------------------------
+
+[ACCESSIBILITY (a11y)]
+1. Спільна проблема відсутності фокусу через css/styles.css (:focus { outline: none; }).
+2. У навігації (рядки 17-20) елементи <div class="nav-item"> повністю неінтерактивні: немає посилань, немає data-target, не працюють взагалі.
+3. Кнопка у шапці: <button ... role="button" aria-label="Get started button">.
+   role="button" є надлишковим на тегу <button>, а слово 'button' всередині aria-label є антипатерном (скрінрідер озвучує "Get started button, кнопка").
+4. Низький контраст для класів .muted та .soft.
+
+[SEO]
+1. Відсутній атрибут lang у тегу <html>.
+2. <title>FlowTask</title> повністю дублює тайтл головної сторінки (дублікати тайтлів шкодять ранжуванню).
+3. Відсутній <meta name="description">.
+4. Відсутній <link rel="canonical">.
+5. Рендер-блокуючий скрипт js/main.js без defer.
+
+[OPEN GRAPH ТА SCHEMA.ORG]
+1. Немає тегів og:* та twitter:*.
+2. Відсутня розмітка Schema.org. Для цієї сторінки ідеально підходить комбінація @type: "AboutPage" та @type: "Organization" із контактами команди.
+
+-----------------------------------------------------
+3. СТАТУС УПРОВАДЖЕННЯ ПРАВОК (РІШЕННЯ СТУДЕНТА)
+-----------------------------------------------------
+1. [a11y] :focus-visible замість outline:none -> ВПРОВАДЖЕНО (css/styles.css)
+2. [a11y] Hero CTA <a> замість <div> -> ВПРОВАДЖЕНО (index.html)
+3. [a11y] Меню <a> замість <div> -> ВПРОВАДЖЕНО (index.html, about.html)
+4. [a11y] Кнопка форми Trial <button type="submit"> -> ВПРОВАДЖЕНО (index.html)
+5. [a11y] Соціальні посилання aria-label ("X", "GitHub", "LinkedIn") -> ВПРОВАДЖЕНО (index.html)
+6. [a11y] Поля форми Trial aria-label -> ВПРОВАДЖЕНО (index.html)
+7. [a11y] Hero img alt="FlowTask board interface preview" -> ВПРОВАДЖЕНО (index.html)
+8. [a11y] Ієрархія h2 замість h4 ("Why FlowTask?") -> ВПРОВАДЖЕНО (index.html)
+9. [a11y] Кнопка шапки #header-cta (видалено role та aria-label) -> ВПРОВАДЖЕНО (index.html, about.html)
+10. [SEO] Видалено <meta name="robots" content="noindex"> -> ВПРОВАДЖЕНО (index.html)
+11. [SEO] robots.txt: видалено заборони css/img, додано sitemap Vercel -> ВПРОВАДЖЕНО (robots.txt)
+12. [SEO] lang="en" для обох документів -> ВПРОВАДЖЕНО (index.html, about.html)
+13. [SEO] meta description в один рядок для обох сторінок -> ВПРОВАДЖЕНО (index.html, about.html)
+14. [SEO] canonical посилання на домен Vercel -> ВПРОВАДЖЕНО (index.html, about.html)
+15. [Schema] SoftwareApplication із тарифами $10, $29, $99 -> ВПРОВАДЖЕНО (index.html)
+16. [Schema] AboutPage та Organization мікророзмітка -> ВПРОВАДЖЕНО (about.html)
+17. [Perf] defer для js/main.js -> ВПРОВАДЖЕНО (index.html, about.html)
+18. [Perf] Прибрано таймер промо-банера (CLS) та цикл блокування CPU -> ВПРОВАДЖЕНО (js/main.js)
+19. [SMO] Open Graph & Twitter Cards -> ВІДХИЛЕНО студентом
+20. [Perf] Стиснення hero.jpg (2.8MB) -> ВІДХИЛЕНО студентом (виконується окремо через CDN/графічний редактор)
+
+
+Gemini 3.8 flash, 19:45

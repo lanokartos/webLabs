@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://courtly-placeholder.vercel.app/sitemap.xml

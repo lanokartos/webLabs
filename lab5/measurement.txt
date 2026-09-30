@@ -1,0 +1,154 @@
+Index.html
+Прогін 1
+Performance
+68
+Accessibility
+79
+Best Practices
+100
+SEO
+50
+----
+Metrics
+Expand view
+First Contentful Paint
+1.2 s
+Largest Contentful Paint
+14.6 s
+Total Blocking Time
+50 ms
+Cumulative Layout Shift
+0.13
+Speed Index
+4.3 s
+========
+Прогін 2
+Performance
+67
+Accessibility
+79
+Best Practices
+100
+SEO
+50
+----
+Metrics
+Expand view
+First Contentful Paint
+1.4 s
+Largest Contentful Paint
+15.2 s
+Total Blocking Time
+110 ms
+Cumulative Layout Shift
+0.13
+Speed Index
+3.8 s
+====
+Прогін 3
+Performance
+58
+Accessibility
+79
+Best Practices
+100
+SEO
+50
+----
+Metrics
+Expand view
+First Contentful Paint
+1.1 s
+Largest Contentful Paint
+14.8 s
+Total Blocking Time
+470 ms
+Cumulative Layout Shift
+0.13
+Speed Index
+2.5 s
+Середні
+Performance: [58, 67, 68] - 67
+Accessibility: [79, 79, 79] - 79
+Best Practices: [100, 100, 100] - 100
+SEO: [50, 50, 50] - 50
+FCP: [1.1 s, 1.2 s, 1.4 s] - 1.2
+сLCP: [14.6 s, 14.8 s, 15.2 s] - 14.8 с
+TBT: [50 ms, 110 ms, 470 ms] - 110
+мсCLS: [0.13, 0.13, 0.13] - 0.13
+Виявлені проблеми:
+-Таб взагалі не видно
+-На основному екрані кнопка Get started не розпізнається табом і не є інтерактивним елементом для скрінрідерів
+-Посилання на гітхаб, лінкедін, твіттер не є невідомими для скрінрідера, тому що немає aria-label
+-Використання div з класом button замість тегу button
+-Відсутні атрибут alt в посиланнях
+////////////////////////////////////////
+About.html
+Performance
+89
+Accessibility
+92
+Best Practices
+96
+SEO
+91
+-----
+etrics
+Expand view
+First Contentful Paint
+2.5 s
+Largest Contentful Paint
+2.5 s
+Total Blocking Time
+0 ms
+Cumulative Layout Shift
+0.129
+Speed Index
+2.5 s
+======
+Performance
+88
+Accessibility
+92
+Best Practices
+96
+SEO
+91
+-----
+Metrics
+Expand view
+First Contentful Paint
+2.6 s
+Largest Contentful Paint
+2.6 s
+Total Blocking Time
+0 ms
+Cumulative Layout Shift
+0.129
+Speed Index
+2.6 s
+======
+Performance
+89
+Accessibility
+92
+Best Practices
+96
+SEO
+91
+------
+Metrics
+Expand view
+First Contentful Paint
+2.6 s
+Largest Contentful Paint
+2.6 s
+Total Blocking Time
+0 ms
+Cumulative Layout Shift
+0.129
+Speed Index
+2.6 s
+Виявлені проблеми:
+-Не працює табуляція
+-Присутні посилання заглушки

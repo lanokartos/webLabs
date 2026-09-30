@@ -48,7 +48,7 @@ python -m http.server 8000
 ### GitHub Pages
 
 1. Завантажте файли в репозиторій.
-2. Settings → Pages → Source: *Deploy from a branch*, гілка `main`, тека `/`.
+2. Settings → Pages → Source: _Deploy from a branch_, гілка `main`, тека `/`.
 3. Сторінка з'явиться за адресою
    `https://<username>.github.io/<repository>/` — або
    `https://<username>.github.io/<repository>/lab-4/`, якщо проєкт лежить у

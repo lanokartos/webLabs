@@ -1,8 +1,8 @@
 /* FlowTask — landing page styles */
 
 @font-face {
-  font-family: "Inter";
-  src: url("../fonts/inter-latin.woff2") format("woff2");
+  font-family: 'Inter';
+  src: url('../fonts/inter-latin.woff2') format('woff2');
   font-weight: 400 700;
   font-style: normal;
 }
@@ -30,15 +30,16 @@
 
 body {
   margin: 0;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   font-size: 17px;
   line-height: 1.65;
   color: var(--ink);
   background: var(--surface);
 }
 
-:focus {
-  outline: none;
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 img {
@@ -141,6 +142,7 @@ a {
   font-weight: 500;
   color: #374151;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .nav-item:hover {

@@ -1,0 +1,119 @@
+ОПИС ЗБЕРЕЖЕНИХ ЗМІН У ПРОЄКТІ (lab5)
+==================================================
+
+1. [ACCESSIBILITY] Пункт 1 (:focus { outline: none; } у css/styles.css)
+   - Файл: css/styles.css
+   - Дія: Видалено ':focus { outline: none; }' та додано:
+     :focus-visible {
+       outline: 2px solid var(--brand);
+       outline-offset: 2px;
+     }
+   - Результат: Відновлено видимий фокус для клавіатурної навігації (Tab) згідно з WCAG 2.4.7.
+   - Додатково: Для класу .nav-item додано 'text-decoration: none;', щоб посилання в шапці не мали дефолтного підкреслення.
+
+2. [ACCESSIBILITY] Пункт 2 (Кнопка 'Get started' в Hero)
+   - Файл: index.html
+   - Дія: Замінено неінтерактивний <div class="button ..."> на семантичне посилання:
+     <a href="#trial" class="button button--primary button--lg" id="hero-cta">Get started</a>
+   - Результат: Кнопка стала доступною для клавіатури, скрінрідерів та скролить до форми реєстрації.
+
+3. [ACCESSIBILITY] Пункт 3 (Пункти навігації меню)
+   - Файли: index.html, about.html
+   - Дія: Усі <div class="nav-item"> замінено на нативні посилання:
+     - index.html: <a href="#features" class="nav-item">Product</a> тощо.
+     - about.html: <a href="index.html#features" class="nav-item">Product</a> тощо.
+   - Результат: Меню стало інтерактивним, доступним для Tab та скрінрідерів.
+
+4. [ACCESSIBILITY] Пункт 4 (Кнопка форми #trial-submit)
+   - Файл: index.html
+   - Дія: Замінено <div id="trial-submit"> на нативний тег <button>:
+     <button type="submit" class="button button--invert" id="trial-submit">Start free trial</button>
+   - Результат: Підтримується стандартне надсилання форми через кнопку або натискання Enter у полях вводу.
+
+5. [ACCESSIBILITY] Пункт 5 (Посилання на соцмережі у футері)
+   - Файл: index.html
+   - Дія: Додано атрибути aria-label для порожніх посилань із SVG-іконками:
+     aria-label="X" (Twitter), aria-label="GitHub", aria-label="LinkedIn".
+   - Результат: Скрінрідери озвучують призначення кожного посилання замість "link, blank".
+
+6. [ACCESSIBILITY] Пункт 6 (Поля форми trial без міток)
+   - Файл: index.html
+   - Дія: Інпутам додано атрибути:
+     aria-label="Your name"
+     aria-label="Work email"
+     aria-label="Company name"
+   - Результат: Поля мають доступні мітки для користувачів асистивних технологій.
+
+7. [ACCESSIBILITY] Пункт 8 (Головне зображення hero без alt)
+   - Файл: index.html
+   - Дія: Тегу <img> додано описовий альтернативний текст:
+     alt="FlowTask board interface preview"
+   - Результат: Виправлено помилку аудиту відсутності alt для ключового зображення.
+
+8. [ACCESSIBILITY] Пункт 9 (Пропуск ієрархії заголовків)
+   - Файл: index.html
+   - Дія: Замінено <h4>Why FlowTask?</h4> на <h2>Why FlowTask?</h2>.
+   - Результат: Відновлено послідовну структуру заголовків (h1 -> h2 -> h3).
+
+9. Кнопка у шапці #header-cta
+   - Файли: index.html, about.html
+   - Дія: Видалено надлишковий role="button" та видалено aria-label="Get started button".
+     Залишено чистий нативний елемент:
+     <button class="btn btn--primary" id="header-cta">Get started</button>
+   - Результат: Прибрано антипатерн подвійного озвучення ("Get started button, кнопка").
+
+10. [SEO] Пункт 1 (<meta name="robots" content="noindex">)
+    - Файл: index.html
+    - Дія: Повністю видалено рядок <meta name="robots" content="noindex">.
+    - Результат: Знято блокування індексації сайту для Googlebot.
+
+11. [SEO] Пункт 2 (директиви в robots.txt)
+    - Файл: robots.txt
+    - Дія: Видалено Disallow: /css/ та Disallow: /img/.
+      Додано директиву на реальний домен Vercel:
+      Sitemap: https://weblabs-lab5.vercel.app/sitemap.xml
+    - Результат: Боти можуть завантажувати стилі для перевірки адаптивності та знаходять карту сайту.
+
+12. [SEO] Пункт 3 (Відсутній lang="en")
+    - Файли: index.html, about.html
+    - Дія: Вказано <html lang="en">.
+    - Результат: Браузери та скрінрідери правильно визначають мову сторінок.
+
+13. [SEO] Пункт 4 (Відсутній <meta name="description">)
+    - Файли: index.html, about.html
+    - Дія: Додано лаконічні описи в один рядок:
+      - index.html: <meta name="description" content="Project management for teams that ship every week.">
+      - about.html: <meta name="description" content="A small team, one product, and a strong opinion about status meetings.">
+    - Результат: Пошуковики мають сніпети опису сторінок для видачі.
+
+14. [SEO] Пункт 6 (Відсутній <link rel="canonical">)
+    - Файли: index.html, about.html
+    - Дія: Додано посилання на реальний домен Vercel:
+      - index.html: <link rel="canonical" href="https://weblabs-lab5.vercel.app/">
+      - about.html: <link rel="canonical" href="https://weblabs-lab5.vercel.app/about.html">
+    - Результат: Запобігання дублюванню контенту між різними доменами та деплоями.
+
+15. [STRUCTURED DATA] Пункт 1 (Заміна @type: "Product" на "SoftwareApplication")
+    - Файл: index.html
+    - Дія: Оновлено JSON-LD мікророзмітку:
+      - Тип замінено на @type: "SoftwareApplication"
+      - Зазначено applicationCategory та operatingSystem: "Web"
+      - Додано реальні тарифні плани в offers ($10, $29, $99).
+    - Результат: Точна відповідність типу сутності без фейкових рейтингів та відсутніх картинок Product.
+
+16. [STRUCTURED DATA] Мікророзмітка AboutPage в about.html
+    - Файл: about.html
+    - Дія: Збережено валідний блок Schema.org (@type: "AboutPage" + "Organization") із посиланням на домен Vercel.
+    - Результат: Семантична розмітка сторінки «Про нас» та контактних даних організації.
+
+17. [PERFORMANCE] Пункт 2 (Скрипт js/main.js блокує парсинг)
+    - Файли: index.html, about.html
+    - Дія: Додано атрибут defer:
+      <script src="js/main.js" defer></script>
+    - Результат: Скрипт завантажується асинхронно, не блокуючи початковий рендеринг DOM.
+
+18. [PERFORMANCE] Пункт 3 (CLS через додавання промо-банера в main.js)
+    - Файл: js/main.js
+    - Дія: Видалено таймер setTimeout (800ms) та динамічну вставку елемента .promo перед body.firstChild.
+      Також прибрано штучний цикл зависання процесора на 300ms у startSignup().
+    - Результат: Усунено зсув макета (CLS зведено до 0) та розвантажено основний потік браузера.

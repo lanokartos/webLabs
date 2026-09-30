@@ -1,12 +1,32 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FlowTask</title>
+    <meta
+      name="description"
+      content="A small team, one product, and a strong opinion about status meetings."
+    />
+    <link rel="canonical" href="https://weblabs-lab5.vercel.app/about.html" />
     <link rel="icon" href="img/logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About FlowTask",
+        "description": "A small team, one product, and a strong opinion about status meetings.",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "FlowTask",
+          "email": "hello@flowtask.example",
+          "url": "https://weblabs-lab5.vercel.app/",
+          "logo": "https://weblabs-lab5.vercel.app/img/logo.svg"
+        }
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -14,23 +34,16 @@
         <img class="logo" src="img/logo.svg" alt="FlowTask" width="132" height="28" />
 
         <nav class="nav" role="navigation" aria-label="Main navigation">
-          <div class="nav-item">Product</div>
-          <div class="nav-item">Pricing</div>
-          <div class="nav-item">FAQ</div>
-          <div class="nav-item">Trial</div>
+          <a href="index.html#features" class="nav-item">Product</a>
+          <a href="index.html#pricing" class="nav-item">Pricing</a>
+          <a href="index.html#faq" class="nav-item">FAQ</a>
+          <a href="index.html#trial" class="nav-item">Trial</a>
         </nav>
 
         <div class="site-header__actions">
           <a class="link-quiet" href="index.html">Home</a>
           <a class="link-quiet" href="#" aria-label="Sign in">Sign in</a>
-          <button
-            class="btn btn--primary"
-            role="button"
-            aria-label="Get started button"
-            id="header-cta"
-          >
-            Get started
-          </button>
+          <button class="btn btn--primary" id="header-cta">Get started</button>
         </div>
       </div>
     </header>
