@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://courtly-placeholder.vercel.app/sitemap.xml
+Sitemap: https://web-labs-blond.vercel.app/sitemap.xml
