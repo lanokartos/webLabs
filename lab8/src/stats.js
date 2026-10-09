@@ -14,5 +14,33 @@
  * @returns {Record<string, GenreStats>} ключ — назва жанру
  */
 export function genreStats(shows) {
-  throw new Error('Not implemented');
+  const listOfGenres = {}
+  for (const show of shows) {
+    for (const genre of show.genres) {
+      if (listOfGenres[genre] === undefined) {
+        listOfGenres[genre] = {
+          count: 1,
+          sumRating: show.rating === null ? 0 : show.rating,
+          countOfRatings: show.rating === null ? 0 : 1
+        }
+      } else {
+        listOfGenres[genre].count++
+        if (show.rating !== null) {
+          listOfGenres[genre].sumRating += show.rating
+          listOfGenres[genre].countOfRatings++
+        }
+      }
+    }
+  }
+  const genres = {}
+  for (const genre in listOfGenres) {
+    if (genres[genre] === undefined) {
+      genres[genre] = {
+        count: listOfGenres[genre].count,
+        averageRating: listOfGenres[genre].countOfRatings === 0 ? null
+          : Number((listOfGenres[genre].sumRating / listOfGenres[genre].countOfRatings).toFixed(1))
+      }
+    }
+  }
+  return genres
 }
